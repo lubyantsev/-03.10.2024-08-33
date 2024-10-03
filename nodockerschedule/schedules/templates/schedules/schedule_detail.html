@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule Detail</title>
+</head>
+<body>
+    <h1>{{ schedule.name }}</h1>
+    <h2>Events</h2>
+    <ul>
+        {% for event in events %}
+            <li>{{ event.time }} - {{ event.place }} - {{ event.participant_name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Enter Password to View Schedule</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ password_form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

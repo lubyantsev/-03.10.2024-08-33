@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Home</h1>
+    <h2>Schedules</h2>
+    <ul>
+        {% for schedule in schedules %}
+            <li><a href="{% url 'schedule_detail' schedule.id %}">{{ schedule.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Create Schedule</h2>
+    <form method="post" action="{% url 'create_schedule' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>
